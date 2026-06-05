@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Theodore E. Downing — About</title>
+  <meta name="description" content="What this site is, how to browse the mosaic, and where the full archive lives." />
+  <meta name="robots" content="noindex,follow" />
+  <meta property="og:title" content="Theodore E. Downing — About" />
+  <meta property="og:description" content="Digital legacy overview: how to use the mosaic and the archive." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0b172a" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#fbfbfd; --panel:#ffffff; --ink:#0b172a; --muted:#5b6473; --line:#e7edf8;
+      --serif:"Playfair Display", ui-serif, Georgia, serif;
+      --sans:"Inter", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto;
+      --radius:18px;
+    }
+    *{box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{margin:0; color:var(--ink); background:linear-gradient(180deg,#f5f7fb,#fbfbfd);} 
+    a{color:inherit; text-decoration:none;}
+    .container{max-width:1120px; margin:0 auto; padding:0 20px;}
+
+    .topbar{position:sticky; top:0; z-index:50; background:rgba(255,255,255,.82);
+      border-bottom:1px solid rgba(231,237,248,.75); backdrop-filter: blur(12px);}
+    nav{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 0; font-family:var(--sans);} 
+    .brand{display:flex; align-items:baseline; gap:10px; font-family:var(--serif); font-weight:700; letter-spacing:.3px;}
+    .brand .mono{font-family:var(--sans); font-weight:800; color:#2563eb; font-size:.82rem; letter-spacing:.06em; text-transform:uppercase;}
+    .navlinks{display:flex; align-items:center; gap:14px; font-size:.92rem; flex-wrap:wrap;}
+    .navlinks a{color:var(--muted); font-weight:600; padding:8px 10px; border-radius:999px;}
+    .navlinks a:hover, .navlinks a.active{color:var(--ink); background:rgba(37,99,235,.08);} 
+    .pill{border:1px solid rgba(37,99,235,.20); background:rgba(37,99,235,.06);} 
+
+    .hero{padding:40px 0 8px; display:grid; gap:20px; grid-template-columns:1fr 1fr; align-items:stretch;}
+    .hero-panel{grid-column: span 2; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;
+      box-shadow: 0 12px 40px rgba(11,23,42,.06); background:var(--panel);}
+    .hero-panel .bg{height:220px; background-size:cover; background-position:center; filter:saturate(1.02); position:relative;}
+    .hero-panel .bg:after{content:"ABOUT"; position:absolute; left:18px; bottom:14px; color:#fff; font-family:var(--sans);
+      font-weight:900; letter-spacing:.12em; font-size:.85rem;}
+    .hero-panel .body{padding:22px 22px 18px;}
+    .hero-panel h1{margin:0; font-family:var(--serif); font-size:clamp(2.2rem, 3.6vw, 3.4rem); line-height:1.06;}
+    .hero-panel p{margin:12px 0 0; color:var(--muted); line-height:1.7;}
+
+    section{padding: 26px 0;}
+    h2{font-family:var(--serif); font-size:clamp(1.8rem,2.2vw,2.2rem); margin:0 0 12px;}
+    .text{color:var(--muted); line-height:1.8; max-width:80ch;}
+    .callout{margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;}
+    .callout a{font-weight:800; padding:10px 12px; border-radius:999px; border:1px solid var(--line); background:#f9fbff;}
+
+    @media (max-width: 920px){
+      .hero{grid-template-columns:1fr;}
+      .hero-panel{grid-column:span 1;}
+      .navlinks{justify-content:flex-start;}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="container">
+      <nav>
+        <a class="brand" href="/">
+          <span class="mono">Mosaic</span>
+          <span>Theodore E. Downing</span>
+        </a>
+        <div class="navlinks">
+          <a href="/" >Home</a>
+          <a href="/about.html" class="active">About</a>
+          <a class="pill" href="https://teddowning-archive.netlify.app" target="_blank" rel="noopener">Browse archive</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-panel">
+        <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=1600&q=80');"></div>
+        <div class="body">
+          <h1>A permanent, readable library.</h1>
+          <p>
+            This site is designed to be fast, stable, and long-lived: the public face is simple, and the deep archive lives as static HTML.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>How to navigate</h2>
+      <p class="text">
+        The Home page is a mosaic: each tile represents a field of Ted’s work and jumps to the corresponding section on the page.
+        The archive is accessible via the archive link in the top navigation.
+      </p>
+
+      <div class="callout">
+        <a href="/">Mosaic home</a>
+        <a href="https://teddowning-archive.netlify.app" target="_blank" rel="noopener">Open archive</a>
+      </div>
+    </section>
+
+    <section>
+      <h2>Why static</h2>
+      <p class="text">
+        Static hosting avoids plugin risk and database complexity. The archive can preserve everything without the fragility of a live CMS.
+      </p>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p class="text">Contact details are deliberately omitted here to reduce spam. We can add Netlify Forms or an external service when ready.</p>
+    </section>
+  </main>
+</body>
+</html>
