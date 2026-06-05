@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Theodore E. Downing</title>
+  <title>Theodore E. Downing — Mosaic</title>
   <meta name="description" content="Theodore E. Downing — scholar, legislator, human rights advocate, election integrity reformer." />
+  <meta name="robots" content="index,follow" />
   <meta property="og:title" content="Theodore E. Downing" />
   <meta property="og:description" content="Five decades of research, public service, and advocacy." />
   <meta property="og:type" content="website" />
@@ -12,6 +13,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232563eb'/%3E%3Cpath d='M16 38h13l-6 10h9l6-10h10v-6H35l6-10h-9l-6 10H16v6z' fill='white'/%3E%3C/svg%3E">
+
   <style>
     :root{
       --bg:#fbfbfd;
@@ -37,11 +40,12 @@
       border-bottom: 1px solid rgba(231,237,248,.75);
     }
     nav{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 0; font-family:var(--sans);} 
-    .brand{display:flex; align-items:baseline; gap:10px; font-family:var(--serif); font-weight:700; letter-spacing:.3px;}
+    .brand{display:flex; align-items:baseline; gap:10px; font-family:var(--serif); font-weight:700; letter-spacing:.3px; text-decoration:none;}
     .brand .mono{font-family:var(--sans); font-weight:800; color:#2563eb; font-size:.82rem; letter-spacing: .06em; text-transform: uppercase;}
-    .navlinks{display:flex; align-items:center; gap:14px; font-size:.92rem;}
+    .navlinks{display:flex; align-items:center; gap:14px; font-size:.92rem; flex-wrap: wrap; justify-content:flex-end;}
     .navlinks a{color:var(--muted); text-decoration:none; font-weight:600; padding:8px 10px; border-radius:999px;}
     .navlinks a:hover{color:var(--ink); background:rgba(37,99,235,.08);}
+    .navlinks .pill{border: 1px solid rgba(37,99,235,.20); background: rgba(37,99,235,.06);}
 
     /* hero */
     .hero{padding:32px 0 18px;}
@@ -60,12 +64,24 @@
       background: linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.55));
     }
 
-    /* mosaic */
+    /* text */
     section{padding: 26px 0;}
     h2{font-family:var(--serif); font-size: clamp(1.8rem,2.2vw,2.2rem); margin:0 0 12px; letter-spacing: .2px;}
+    h3{font-family:var(--sans); font-weight:800; margin:0 0 8px; letter-spacing:.02em;}
     .section-intro{color:var(--muted); line-height:1.7; margin-bottom:18px; max-width: 78ch;}
 
-    .mosaic{display:grid; grid-template-columns:repeat(12, 1fr); gap:12px;}
+    /* cards */
+    .cards{display:grid; grid-template-columns:repeat(12, 1fr); gap:12px;}
+    .card{grid-column: span 6; background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:18px; box-shadow: 0 12px 30px rgba(11,23,42,.05);}
+    .card ul{margin:0; padding-left:18px; color:var(--muted); line-height:1.7;}
+    .card p{margin:0 0 8px; color:var(--muted); line-height:1.7;}
+
+    .archive-link{margin-top:10px; display:flex; gap:10px; align-items:center; flex-wrap:wrap;}
+    .archive-link a{font-weight:800; text-decoration:none; color:#2563eb; padding:7px 10px; border-radius:999px; background:rgba(37,99,235,.08);}
+    .archive-link .hint{color:var(--muted); font-size:.9rem;}
+
+    /* mosaic tiles */
+    .mosaic{display:grid; grid-template-columns:repeat(12, 1fr); gap:12px; margin-bottom:10px;}
     .tile{
       position:relative;
       border-radius:16px;
@@ -75,16 +91,14 @@
       text-decoration:none;
       box-shadow: 0 12px 30px rgba(11,23,42,.06);
     }
-    .tile .bg{position:absolute; inset:0; background-size:cover; background-position:center; filter: saturate(1.02) contrast(1.04); transform: scale(1.04);}
+    .tile .bg{position:absolute; inset:0; background-size:cover; background-position:center; filter: saturate(1.02) contrast(1.04); transform: scale(1.04);
+      transition: transform .6s ease;
+    }
     .tile::before{content:""; position:absolute; inset:0; background: linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.45));}
     .tile .label{position:absolute; left:12px; bottom:12px; color:#fff; font-family:var(--sans); font-weight:800; letter-spacing:.04em; text-transform:uppercase; font-size:.85rem;}
-    .tile:hover .bg{transform: scale(1.1); transition: transform .6s ease;} 
+    .tile:hover .bg{transform: scale(1.1);} 
     .tile:hover{transform: translateY(-1px);} 
-
     .span-4{grid-column: span 4;} /* 3 tiles per row */
-
-    .highlight{background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:18px 18px; display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:10px;}
-    .highlight b{font-weight:800;}
 
     .footnote{margin-top:14px; color:var(--muted); font-size:.9rem;}
 
@@ -92,7 +106,9 @@
       .hero-grid{grid-template-columns: 1fr;}
       .mosaic{grid-template-columns: 1fr;}
       .span-4{grid-column: span 12;}
-      .highlight{grid-template-columns:1fr;}
+      .cards{grid-template-columns:1fr;}
+      .card{grid-column: span 12;}
+      .navlinks{justify-content:flex-start;}
     }
   </style>
 </head>
@@ -102,12 +118,13 @@
     <div class="container">
       <nav>
         <a class="brand" href="#top">
-          <span class="mono">Archive</span>
+          <span class="mono">Mosaic</span>
           <span>Theodore E. Downing</span>
         </a>
         <div class="navlinks">
-          <a href="#mosaic">Mosaic</a>
-          <a href="#highlights">Highlights</a>
+          <a href="#mosaic">Home</a>
+          <a href="#areas">Areas</a>
+          <a class="pill" href="https://teddowning-archive.netlify.app" target="_blank" rel="noopener">Browse archive</a>
           <a href="#contact">Contact</a>
         </div>
       </nav>
@@ -130,10 +147,15 @@
               <span class="chip">Global development</span>
               <span class="chip">Public scholarship</span>
             </div>
+
+            <div class="archive-link">
+              <a href="https://teddowning-archive.netlify.app" target="_blank" rel="noopener">Open archive</a>
+              <span class="hint">(full site content, fast, static)</span>
+            </div>
           </div>
 
           <div class="hero-photo">
-            <img alt="Photo mosaic placeholder" src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1300&q=80" />
+            <img alt="Photo mosaic placeholder" src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=1300&q=80" />
           </div>
         </div>
       </section>
@@ -141,72 +163,139 @@
       <section id="mosaic">
         <h2>Career mosaic</h2>
         <p class="section-intro">
-          Each image represents an area of Ted&rsquo;s work. Use the mosaic as the main navigation—click to jump to the relevant section.
+          Each image represents an area of Ted’s work. Use the mosaic as the main navigation—click to jump to the relevant section.
         </p>
 
         <div class="mosaic">
           <a class="tile span-4" href="#election">
-            <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1459206475511-ef50d0a13b8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1459206475511-ef50d0a13b8b?auto=format&fit=crop&w=1200&q=80');"></div>
             <div class="label">Election Integrity</div>
           </a>
 
           <a class="tile span-4" href="#legislator">
-            <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1544377193-35b9341f8d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1544377193-35b9341f8d1f?auto=format&fit=crop&w=1200&q=80');"></div>
             <div class="label">Legislator</div>
           </a>
 
           <a class="tile span-4" href="#scholar">
-            <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=80');"></div>
             <div class="label">Scholar</div>
           </a>
 
           <a class="tile span-4" href="#human-rights">
-            <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?auto=format&fit=crop&w=1200&q=80');"></div>
             <div class="label">Human Rights</div>
           </a>
 
           <a class="tile span-4" href="#displacement">
-            <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1526481280695-3c687fd543e5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1526481280695-3c687fd543e5?auto=format&fit=crop&w=1200&q=80');"></div>
             <div class="label">Displacement & Resettlement</div>
           </a>
 
           <a class="tile span-4" href="#media">
-            <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1529385101576-4c1bc941ec7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1529385101576-4c1bc941ec7e?auto=format&fit=crop&w=1200&q=80');"></div>
             <div class="label">Media</div>
           </a>
         </div>
       </section>
 
-      <section id="highlights">
-        <h2>Highlights</h2>
+      <section id="areas">
+        <h2>Work areas</h2>
         <p class="section-intro">
-          A simplified overview designed for permanent longevity and fast reading. The underlying archive can remain on WordPress (if you prefer) or be curated here as static HTML.
+          A curated overview. The full archive is kept as a static site (fast, safe, and permanent).
         </p>
 
-        <div class="highlight">
-          <div>
-            <b>Election integrity</b>
-            <div>Policy work emphasizing transparent audits, public confidence, and institutional safeguards.</div>
+        <div class="cards">
+          <div class="card" id="election">
+            <h3>Election Integrity</h3>
+            <p>
+              Transparent audits, verifiable processes, and a public that can trust what it cannot personally inspect.
+            </p>
+            <ul>
+              <li>Audit policy and legislative work</li>
+              <li>Design of procedural safeguards</li>
+              <li>Public accountability with technical detail</li>
+            </ul>
           </div>
-          <div>
-            <b>Development-induced displacement</b>
-            <div>Research and practice on involuntary resettlement and the ethics of large-scale development.</div>
+
+          <div class="card" id="legislator">
+            <h3>Legislator</h3>
+            <p>
+              Practical governance: turning problems into policy, and policy into institutional reality.
+            </p>
+            <ul>
+              <li>Arizona House work and legislative initiatives</li>
+              <li>Ethics of representation</li>
+              <li>Institutional resilience</li>
+            </ul>
           </div>
-          <div>
-            <b>Public scholarship</b>
-            <div>Writing, interviews, and service tying academic work to democratic accountability.</div>
+
+          <div class="card" id="scholar">
+            <h3>Scholar</h3>
+            <p>
+              Applied anthropology and field-informed scholarship—connected to the world, not abstracted from it.
+            </p>
+            <ul>
+              <li>Publications and research over five decades</li>
+              <li>Mentorship and teaching</li>
+              <li>Applied ethics as method</li>
+            </ul>
+          </div>
+
+          <div class="card" id="human-rights">
+            <h3>Human Rights</h3>
+            <p>
+              Defending participation, dignity, and fairness—where law and lived experience collide.
+            </p>
+            <ul>
+              <li>Civil liberties and democratic safeguards</li>
+              <li>Advocacy informed by scholarship</li>
+              <li>Interventions that scale beyond headlines</li>
+            </ul>
+          </div>
+
+          <div class="card" id="displacement">
+            <h3>Displacement & Resettlement</h3>
+            <p>
+              Development has costs. Ted’s work centers the people who bear them—before, during, and after resettlement.
+            </p>
+            <ul>
+              <li>Development-induced displacement</li>
+              <li>Resettlement practice and policy</li>
+              <li>Ethical governance of development</li>
+            </ul>
+          </div>
+
+          <div class="card" id="media">
+            <h3>Media</h3>
+            <p>
+              Interviews, lectures, and public conversations—documentation of the work and the reasoning behind it.
+            </p>
+            <ul>
+              <li>Video and audio appearances</li>
+              <li>Curated links</li>
+              <li>Calls to action and reflection</li>
+            </ul>
           </div>
         </div>
-        <div class="footnote">This page is intentionally clean and static for speed, security, and maintainability.</div>
+
+        <div class="archive-link">
+          <a href="https://teddowning-archive.netlify.app" target="_blank" rel="noopener">Browse archive</a>
+          <span class="hint">Archive content hosted as a static site for speed and preservation.</span>
+        </div>
       </section>
 
       <section id="contact">
         <h2>Contact</h2>
-        <p class="section-intro">Modern contact form options can be added without WordPress (Netlify forms, static forms, or an external service). For now, this is a placeholder.</p>
-        <div class="hero-card" style="padding:18px 18px; margin-bottom:28px;">
-          <b>Email:</b> (add) • <b>Phone:</b> (add)
-          <div style="margin-top:8px; color:var(--muted)">Keeping contact fields out of the static repo avoids accidental spam.</div>
+        <p class="section-intro">
+          Placeholder. Modern contact options (Netlify forms or external services) can be added without reintroducing WordPress maintenance.
+        </p>
+        <div class="card" style="grid-column: span 12;">
+          <p style="font-weight:700; color:var(--muted);">
+            Contact details will be added here.
+          </p>
         </div>
+        <div class="footnote">Designed as a gift site: clean, fast, secure, and maintainable.</div>
       </section>
     </div>
   </main>
